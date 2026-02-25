@@ -1,0 +1,17 @@
+{
+  "slug": "example-ruin",
+  "title": "Example Ruin",
+  "author": "Akira",
+  "description": "Test structure entry for initial setup.",
+  "tags": ["ruins", "test"],
+  "minecraft_versions": ["1.12.2"],
+  "recurrent_complex_versions": ["1.4.8.6"],
+  "dependencies": [],
+  "biomes": ["plains"],
+  "dimensions": ["overworld"],
+  "license": "CC BY 4.0",
+  "preview": "preview.png",
+  "file": "structure.rcst",
+  "created_at": "2026-02-24",
+  "source_url": ""
+}
