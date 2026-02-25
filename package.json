@@ -1,0 +1,12 @@
+{
+  "name": "recurrent-complex-structures",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build:index": "node scripts/build-index.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}
