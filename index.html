@@ -17,35 +17,37 @@
 
   <div id="list">Loading...</div>
 
-  <script>
-    // For now, hardcode one entry. Later we'll auto-generate this.
-    const entries = [
-      {
-        title: "Example Ruin",
-        author: "Akira",
-        description: "Test structure entry for initial setup.",
-        tags: ["ruins", "test"],
-        preview: "structures/example-ruin/preview.png",
-        file: "structures/example-ruin/structure.rcst"
-      }
-    ];
-
+<script>
+  async function main() {
     const list = document.getElementById("list");
-    list.innerHTML = "";
+    list.textContent = "Loading...";
 
+    let entries = [];
+    try {
+      const res = await fetch("index.json");
+      entries = await res.json();
+    } catch (e) {
+      list.textContent = "Failed to load index.json";
+      return;
+    }
+
+    list.innerHTML = "";
     for (const e of entries) {
       const div = document.createElement("div");
       div.className = "card";
       div.innerHTML = `
-        <img src="${e.preview}" alt="${e.title} preview" onerror="this.style.display='none'">
+        <img src="${e.preview_url}" alt="${e.title} preview" onerror="this.style.display='none'">
         <h3>${e.title}</h3>
         <p><strong>By:</strong> ${e.author}</p>
         <p>${e.description}</p>
-        <p class="tags"><strong>Tags:</strong> ${e.tags.join(", ")}</p>
-        <p><a href="${e.file}" download>Download structure file</a></p>
+        <p class="tags"><strong>Tags:</strong> ${(e.tags || []).join(", ")}</p>
+        <p><a href="${e.file_url}" download>Download structure file</a></p>
       `;
       list.appendChild(div);
     }
-  </script>
+  }
+
+  main();
+</script>
 </body>
 </html>
